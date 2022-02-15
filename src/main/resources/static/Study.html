@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Flex</title>
+    </head>
+    <body>
+        <style>
+            .title {
+                font-size: 16px;
+                font-weight: bold;
+            }
+
+            .border{
+                border: 1px solid red;
+            }
+
+            .parent01 {
+                display: flex;
+                /* 指定布局方向
+                row：横向靠左；
+                column ：竖向靠上；
+                row-reverse ：横向靠右；
+                column-reverse ： 竖向靠下*/
+                flex-direction: row;
+                width: 300px;
+            }
+            .parent02 {
+                display: flex;
+                /*width: 200px;*/
+                /*flex-direction: row;*/
+                height: 200px;
+                flex-direction: column;
+                /*如果一行或者一列排列不下时， 换行；且需要配合宽/高来使用。
+                nowrap:不换行；
+                wrap：第一行在上/左方；
+                wrap-reverse ：换行第一行在下/右方*/
+                flex-wrap: wrap-reverse;
+            }
+
+            .parent03{
+                display: flex;
+                /*flex-direction 和 flex-wrap 的结合*/
+                flex-flow: wrap column;
+                height: 200px;
+                width: 400px;
+            }
+
+            .parent04{
+                display: flex;
+                flex-flow: wrap row; /*flex-direction 和 flex-wrap 的结合*/
+                height: 200px;
+                width: 400px;
+
+                /* 单向的对齐方式；
+                且需要配合宽/高来使用
+                flex-start: 左/上 对齐；
+                flex-end：右/下对齐；
+                center：左右/上下 剧中对齐；
+                space-between ： 两边对齐；
+                space-around：每个子元素左右/上下 间距一样大（例如：每个子元素都有个margin）；
+                space-evenly：子元素之间的间距一样大（例如：每个子元素都是margin-left，最后一个margin-right）*/
+                justify-content: center;
+            }
+
+            .parent05{
+                display: flex;
+                width: 400px;
+                height: 200px;
+                flex-flow: wrap row;
+                /*
+                    与flex-direction 指定方向的垂直方向对齐，例如 flex-direction：row -> justify-content 就是水平对其；align-items就是垂直对其
+                    且需要配合宽/高来使用
+                    flex-start：上/左
+                    flex-end: 下/右
+                    center: 上下/左右 剧中
+                    baseline: 项目的第一行文字的基线对齐
+                    stretch: 默认值,
+                 */
+                align-items: center;
+
+            }
+
+            .parent06{
+                display: flex;
+                width: 200px;
+                height: 500px;
+                flex-flow: wrap row;
+                /* 当子元素多行显示时，起作用, 认为一行为一个大的子元素
+                 flex-start: 第二行挨着第一行,且第一行 左/上 对齐
+                 flex-end ：第二行挨着第一行，第二行 右/下对齐
+                 center: 与flex-direction 指定方向的垂直方向 剧中
+                 space-between： 上下/左右 两头对齐
+                 space-around ： 每行都有个margin
+                 stretch： 默认值
+                 */
+                align-content: stretch;
+            }
+
+            .children01 {
+                background: aqua;
+                width: 100px;
+                height: 100px;
+                /*
+                    元素排序规则， 越小越靠前,默认值0
+                 */
+                order: 0;
+
+                /*
+                    放大比例： 默认0
+                 */
+                /*flex-grow: 0;*/
+
+                /*
+                    缩小比例：默认1,不缩放；
+                    设置为0 则空间不足时缩小
+                */
+                /*flex-shrink: 1*/
+
+                /*
+                    设置子元素所占固定空间
+                */
+                /*flex-basis:200px*/
+
+                /*
+                    flex-grow, flex-shrink 和 flex-basis 结合
+                */
+                /*flex: 0 1 auto;*/
+
+                /*
+                    单独设置元素的对齐方式，默认auto； 设置值与align-items 一样
+                */
+                /*align-self: auto;*/
+            }
+
+            .children02 {
+                background: #ff1b2c;
+                width: 100px;
+                height: 100px;
+                order: 1;
+                /*flex-grow: 1;*/
+                /*flex-shrink: 0*/
+            }
+
+            .children03 {
+                background: #fdff13;
+                width: 100px;
+                height: 100px;
+                order: 2;
+                /*flex-grow: 2;*/
+                /*flex-shrink: 0*/
+            }
+
+        </style>
+
+        <div>
+            <div>
+                <span class="title">1、Flex :  flex-direction</span>
+                <div class="parent01 border">
+                    <div class="children01">First</div>
+                    <div class="children02">Second</div>
+                    <div class="children03">Three</div>
+                </div>
+            </div>
+
+            <div>
+                <span class="title">2、Flex :  flex-wrap</span>
+                <div class="parent02 border">
+                    <div class="children01">First</div>
+                    <div class="children02">Second</div>
+                    <div class="children03">Three</div>
+                </div>
+            </div>
+
+            <div>
+                <span class="title">3、Flex :  flex-flow</span>
+                <div class="parent03 border">
+                    <div class="children01">First</div>
+                    <div class="children02">Second</div>
+                    <div class="children03">Three</div>
+                </div>
+            </div>
+
+            <div>
+                <span class="title">4、Flex : justify-content</span>
+                <div class="parent04 border">
+                    <div class="children01">First</div>
+                    <div class="children02">Second</div>
+                    <div class="children03">Three</div>
+                </div>
+            </div>
+
+            <div>
+                <span class="title">5、Flex : align-items</span>
+                <div class="parent05 border">
+                    <div class="children01">First</div>
+                    <div class="children02">Second</div>
+                    <div class="children03">Three</div>
+                </div>
+            </div>
+            <div>
+                <span class="title">6、Flex : align-content</span>
+                <div class="parent06 border">
+                    <div class="children01">First</div>
+                    <div class="children02">Second</div>
+                    <div class="children03">Three</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
